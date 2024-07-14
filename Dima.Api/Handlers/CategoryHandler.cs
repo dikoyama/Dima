@@ -25,7 +25,7 @@ namespace Dima.Api.Handlers
 
                 return new Response<Category?>(category, 201, "Categoria criada com sucesso");
             }
-            catch 
+            catch
             {
                 return new Response<Category?>(null, 500, "Não foi possível criar a categoria");
             }
@@ -122,7 +122,7 @@ namespace Dima.Api.Handlers
                                                          request.PageNumber,
                                                          request.PageSize);
             }
-            catch (Exception)
+            catch
             {
                 return new PagedResponse<List<Category>>(null, 500, "Não foi possível recuperar as categorias");
             }
