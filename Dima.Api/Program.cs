@@ -5,6 +5,7 @@ using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
 using Dima.Core.Responses;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -15,18 +16,40 @@ var connectionString = builder
     .Configuration
     .GetConnectionString("DefaultConnection") ?? string.Empty;
 
-builder.Services.AddDbContext<AppDbContext>(x =>
+builder
+    .Services.
+    AddEndpointsApiExplorer();
+
+builder
+    .Services
+    .AddSwaggerGen(options =>
     {
-        x.UseSqlServer(connectionString);
+        options.CustomSchemaIds(n => n.FullName);
     });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.CustomSchemaIds(n => n.FullName);
-});
-builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
+builder
+    .Services
+    .AddAuthentication(IdentityConstants.ApplicationScheme)
+    .AddIdentityCookies();
 
+builder
+    .Services
+    .AddAuthorization();
+
+builder
+    .Services
+    .AddDbContext<AppDbContext>(x =>
+        {
+            x.UseSqlServer(connectionString);
+        });
+
+builder
+    .Services
+    .AddTransient<ICategoryHandler, CategoryHandler>();
+
+builder
+    .Services
+    .AddTransient<ITransactionHandler, TransactionHandler>();
 
 var app = builder.Build();
 
