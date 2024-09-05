@@ -1,6 +1,7 @@
 using Dima.Api.Data;
 using Dima.Api.Endpoints;
 using Dima.Api.Handlers;
+using Dima.Api.Models;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
@@ -45,6 +46,13 @@ builder
 
 builder
     .Services
+    .AddIdentityCore<User>()
+    .AddRoles<IdentityRole<long>>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddApiEndpoints();
+
+builder
+    .Services
     .AddTransient<ICategoryHandler, CategoryHandler>();
 
 builder
@@ -53,11 +61,17 @@ builder
 
 var app = builder.Build();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapGet("/", () => new { message = "OK"});
 app.MapEndpoints();
+app.MapGroup("v1/identity")
+    .WithTags("Identity")
+    .MapIdentityApi<User>();
 
 app.Run();
 
