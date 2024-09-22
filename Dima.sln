@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dima.Core", "Dima.Core\Dima
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dima.Api", "Dima.Api\Dima.Api.csproj", "{3851DD16-D767-4B5B-8981-E593746C4A97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dima.App", "Dima.App\Dima.App.csproj", "{15DDC9A6-F978-48B7-A785-9FBC0E08C6A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dima.App", "Dima.App\Dima.App.csproj", "{15DDC9A6-F978-48B7-A785-9FBC0E08C6A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

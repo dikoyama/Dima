@@ -1,5 +1,4 @@
 ﻿@page "/login"
-@using System.ComponentModel.DataAnnotations
 @layout HeadlessLayout
 
 <PageTitle>Dima - Entrar</PageTitle>
@@ -29,6 +28,12 @@
                         Required="true"
                         RequiredError="Senha inválida"/>
             </MudForm>
+
+            <div class="d-flex mt-8">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary">Entrar</MudButton>
+                <MudSpacer />
+                <MudButton Href="/comecar">Registrar</MudButton>
+            </div>
         </MudPaper>
     </MudItem>
 </MudGrid>
