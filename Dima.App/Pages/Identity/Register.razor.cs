@@ -53,6 +53,7 @@ namespace Dima.App.Pages.Identity
 
             try
             {
+
                 var result = await Handler.RegisterAsync(InputModel);
 
                 if (result.Sucess)
