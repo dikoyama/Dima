@@ -34,4 +34,4 @@ app.MapEndpoints();
 app.Run();
 
 // user-secrets
-// dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=NBKOYAMA\MSSQLSERVER01;Database=dima-dev;User ID=sa;Password=dp;Trusted_Connection=False;TrustServerCertificate=True;"
+// dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=NBKOYAMA\DIEGO;Database=dima-dev;User ID=sa;Password=dp;Trusted_Connection=False;TrustServerCertificate=True;"
